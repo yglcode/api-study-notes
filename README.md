@@ -1,5 +1,5 @@
-## Study Notes: Small(Deep) APIs with Typeless(Opaque) Data ##
-### _diff between Application API and System API; Go net/rpc is impressively "small"_ ###
+## Small(Deep) APIs with Typeless(Opaque) Data, a study note ##
+### _And difference between Application API and System API; How Go net/rpc is impressively "small"_ ###
 
 ### **1. Small(Narrow/Deep) API with typeless/Opaque Data.** ###
 
@@ -24,7 +24,7 @@
    * use a small set of operations to manipulate the resource: open/close/read/write/seek
    * the api methods (read, write) use "typeless" data (void *), plain byte stream; all app specific data type info (pdf,jpeg,header,record...) are removed.
 
-   If we want our api to be "strongly-typed", keep app data type info in api, the abstraction will be bogged down by diff use cases. An abstraction promotes a particular view of system: focus on a particular set of "essential" concepts and hide others as "minor" details.
+   If we want our api to be "strongly-typed", keep app data type info in api, the abstraction will be bogged down by different use cases. An abstraction promotes a particular view of system: focus on a particular set of "essential" concepts and hide others as "minor" details.
 
    How do we hide details in programming?
 
@@ -61,7 +61,7 @@
 
    Compared to gRPC, net/rpc is more similar to the above mentioned "system api": 
 
-   * remote methods/functions exposed at server are organized into hierachical namespace, which can be as simple as "serviceName.methodName". This "pathname" is the 1st argument of Call()/Go(), what client use to identify the remote function.   
+   * remote methods/functions exposed at server are organized into hierachical namespace, which can be as simple as "serviceName.methodName". This "pathname" is the 1st argument of Call()/Go(), what client use to identify the remote function.
    * If we treat "remote functions" as resources, what we can do to them? We can only invoke them. So the set of operations we can apply to them are different ways to invoke remote functions:
 
       + synchronous invoke (Call): invoke remote function and wait for result.
