@@ -67,6 +67,7 @@
       + synchronous invoke (Call): invoke remote function and wait for result.
       + asynchronous invoke (Go): invoke remote funtions, don't wait and return right away with a result-pending "done" channel (or "future" in other language); continue with other work and later retrieve the result (or error) thru "done" channel (or "future").
       + one-way call (FireAndForget): ?
+      + streaming (bi-directional): ?
 
    * api operations (Call,Go) only use "typeless" data: "args interface{}. reply interface{}". The important details in normal function signature,  number/types of arguments and result, are all removed and replaced with empty interface{}, that allows this api to fit the different data structures required in various applications.
 
