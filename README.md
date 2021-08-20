@@ -19,9 +19,10 @@
    ...
 ```
    Looking at the above methods, we can see a common theme:
-        * use string pathname to identify resource/object in a hierarchical namespace.
-        * use a small set of operations to manipulate the resource: open/close/read/write/seek
-        * the api methods (read, write) use "typeless" data (void *), plain byte stream; all app specific data type info (pdf,jpeg,header,record...) are removed.
+
+   * use string pathname to identify resource/object in a hierarchical namespace.
+   * use a small set of operations to manipulate the resource: open/close/read/write/seek
+   * the api methods (read, write) use "typeless" data (void *), plain byte stream; all app specific data type info (pdf,jpeg,header,record...) are removed.
 
    If we want our api to be "strongly-typed", keep app data type info in api, the abstraction will be bogged down by diff use cases. An abstraction promotes a particular view of system: focus on a particular set of "essential" concepts and hide others as "minor" details.
 
