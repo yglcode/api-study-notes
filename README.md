@@ -3,7 +3,7 @@
 
 ### **1. Small(Narrow/Deep) API with typeless/Opaque Data.** ###
 
-   Recently i watched the video of John Ousterhout's "A Philosophy of Software Design" [youtube link](). He teaches the importance of small/deep API/interfaces for reducing software complexity. The prime example he give is the Unix file IO interface (open/close/read/write/lseek).
+   Recently i watched the video of John Ousterhout's "A Philosophy of Software Design" [youtube link](https://www.youtube.com/watch?v=bmSAYlu0NcY). He teaches the importance of small/deep API/interfaces for reducing software complexity. The prime example he give is the Unix file IO interface (open/close/read/write/lseek).
 
    As a metaphor of the situation, suppose we have a complicated twisted rope of wires, how we can get a "minimal" interface to all wires? The solution is a "cut" perpendicular to the rope, or an interface/API "orthogonal" to normal flows.
 
@@ -45,7 +45,7 @@
 
 ### **3. Go net/rpc is impressively "small".** ###
 
-   Go net/rpc [api doc]() is small in every sense. Implementation wise, its main client/server code combined is around 900 lines. Api wise, besides various ways to set up client-server connections, there are only two methods for remote method call:
+   Go net/rpc [api doc](https://pkg.go.dev/net/rpc@go1.17) is small in every sense. Implementation wise, its main client/server code combined is around 900 lines. Api wise, besides various ways to set up client-server connections, there are only two methods for remote method call:
 ```go
    // for synchronous call
    func (cli *Client) Call(serviceMethod string, args interface{}, reply interface{}) error
