@@ -1,4 +1,4 @@
-## Small(Deep) APIs with Typeless(Opaque) Data, a study note ##
+## Small APIs with Typeless Data, a study note ##
 ### _And difference between Application API and System API; How Go net/rpc is impressively "small"_ ###
 
 ### **1. Small(Narrow/Deep) API with typeless/Opaque Data.** ###
