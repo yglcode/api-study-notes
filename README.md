@@ -19,20 +19,29 @@
    ...
 ```
    Looking at the above methods, we can see a common theme:
+
       * use string pathname to identify resource/object in a hierarchical namespace.
+
       * use a small set of operations to manipulate the resource: open/close/read/write/seek
+
       * the api methods (read, write) use "typeless" data (void *), plain byte stream; all app specific data type info (pdf,jpeg,header,record...) are removed.
 
    If we want our api to be "strongly-typed", keep app data type info in api, the abstraction will be bogged down by diff use cases. An abstraction promotes a particular view of system: focus on a particular set of "essential" concepts and hide others as "minor" details.
 
    How do we hide details in programming?
+
       * don't mention them (in api signatures).
+
       * make them "typeless" (ie. can be anything): use void* in C/C++, or empty interface{} in Go.
 
    Another prime example of small/deep API which exhibits the above common theme is HTTP protocol:
+
       * resources are identified by string URI/URLs in hierarchical namespace
+
       * resources are manipulated thru a small set of methods (or verbs): Get/Put/Post/Delete/Patch
+
       * the api methods use typeless data: request/response body are binary blobs (octet*), which are decoded based on Content-Type and Content-Encoding headers.
+
       * they are "deep": covering all the use cases of web based programming (RESTful), retrieving/updating database, controlling remote services and devices,....
 
 ### **2. Difference between application APIs and system apis.** ###
