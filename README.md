@@ -64,9 +64,9 @@
    * remote methods/functions exposed at server are organized into hierachical namespace, which can be as simple as "serviceName.methodName". This "pathname" is the 1st argument of Call()/Go(), what client use to identify the remote function.   
    * If we treat "remote functions" as resources, what we can do to them? We can only invoke them. So the set of operations we can apply to them are different ways to invoke remote functions:
 
-      . synchronous invoke (Call): invoke remote function and wait for result.
-      . asynchronous invoke (Go): invoke remote funtions, don't wait and return right away with a result-pending "done" channel (or "future" in other language); continue with other work and later retrieve the result (or error) thru "done" channel (or "future").
-      . one-way call (FireAndForget): ?
+      + synchronous invoke (Call): invoke remote function and wait for result.
+      + asynchronous invoke (Go): invoke remote funtions, don't wait and return right away with a result-pending "done" channel (or "future" in other language); continue with other work and later retrieve the result (or error) thru "done" channel (or "future").
+      + one-way call (FireAndForget): ?
 
    * api operations (Call,Go) only use "typeless" data: "args interface{}. reply interface{}". The important details in normal function signature,  number/types of arguments and result, are all removed and replaced with empty interface{}, that allows this api to fit the different data structures required in various applications.
 
