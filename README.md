@@ -27,14 +27,16 @@
    If we want our api to be "strongly-typed", keep app data type info in api, the abstraction will be bogged down by diff use cases. An abstraction promotes a particular view of system: focus on a particular set of "essential" concepts and hide others as "minor" details.
 
    How do we hide details in programming?
-        * don't mention them (in api signatures).
-        * make them "typeless" (ie. can be anything): use void* in C/C++, or empty interface{} in Go.
+
+   * don't mention them (in api signatures).
+   * make them "typeless" (ie. can be anything): use void* in C/C++, or empty interface{} in Go.
 
    Another prime example of small/deep API which exhibits the above common theme is HTTP protocol:
-      * resources are identified by string URI/URLs in hierarchical namespace
-      * resources are manipulated thru a small set of methods (or verbs): Get/Put/Post/Delete/Patch
-      * the api methods use typeless data: request/response body are binary blobs (octet*), which are decoded based on Content-Type and Content-Encoding headers.
-      * they are "deep": covering all the use cases of web based programming (RESTful), retrieving/updating database, controlling remote services and devices,....
+
+   * resources are identified by string URI/URLs in hierarchical namespace
+   * resources are manipulated thru a small set of methods (or verbs): Get/Put/Post/Delete/Patch
+   * the api methods use typeless data: request/response body are binary blobs (octet*), which are decoded based on Content-Type and Content-Encoding headers.
+   * they are "deep": covering all the use cases of web based programming (RESTful), retrieving/updating database, controlling remote services and devices,....
 
 ### **2. Difference between application APIs and system apis.** ###
 
@@ -58,12 +60,15 @@
    For gRPC based services, we will first define application specific protobuf schema files and generate stub/skeleton code, which will provide domain specific rich data types and strongly typed api methods.
 
    Compared to gRPC, net/rpc is more similar to the above mentioned "system api": 
-      * remote methods/functions exposed at server are organized into hierachical namespace, which can be as simple as "serviceName.methodName". This "pathname" is the 1st argument of Call()/Go(), what client use to identify the remote function.   
-      * If we treat "remote functions" as resources, what we can do to them? We can only invoke them. So the set of operations we can apply to them are different ways to invoke remote functions:
-         . synchronous invoke (Call): invoke remote function and wait for result.
-         . asynchronous invoke (Go): invoke remote funtions, don't wait and return right away with a result-pending "done" channel (or "future" in other language); continue with other work and later retrieve the result (or error) thru "done" channel (or "future").
-         . one-way call (FireAndForget): ?
-      * api operations (Call,Go) only use "typeless" data: "args interface{}. reply interface{}". The important details in normal function signature,  number/types of arguments and result, are all removed and replaced with empty interface{}, that allows this api to fit the different data structures required in various applications.
+
+   * remote methods/functions exposed at server are organized into hierachical namespace, which can be as simple as "serviceName.methodName". This "pathname" is the 1st argument of Call()/Go(), what client use to identify the remote function.   
+   * If we treat "remote functions" as resources, what we can do to them? We can only invoke them. So the set of operations we can apply to them are different ways to invoke remote functions:
+
+      . synchronous invoke (Call): invoke remote function and wait for result.
+      . asynchronous invoke (Go): invoke remote funtions, don't wait and return right away with a result-pending "done" channel (or "future" in other language); continue with other work and later retrieve the result (or error) thru "done" channel (or "future").
+      . one-way call (FireAndForget): ?
+
+   * api operations (Call,Go) only use "typeless" data: "args interface{}. reply interface{}". The important details in normal function signature,  number/types of arguments and result, are all removed and replaced with empty interface{}, that allows this api to fit the different data structures required in various applications.
 
    Of course similar to other system api such as http, in real production, people often wrap strongly-typed SDK over net/rpc to support application code.
 
