@@ -29,8 +29,7 @@
    How do we hide data details in programming?
 
    * don't mention them (in api signatures).
-   * make them "typeless" (ie. can be anything): use void* in C/C++, or empty interface{} in Go.
-   * use generic container (and format) which can hold data of any types: bytes buffer (binary blobs and streams); data of any types can be encoded-into / decoded-from bytes buffer.
+   * make them "typeless" (ie. can be anything): use void* in C/C++, or empty interface{} in Go; or a generic container which can hold data of any types: bytes buffer (binary blobs and streams, data of any types can be encoded-into / decoded-from bytes buffer).
 
    Another prime example of small/deep API which exhibits the above common theme is HTTP protocol:
 
